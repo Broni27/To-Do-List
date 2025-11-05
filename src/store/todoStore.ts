@@ -102,7 +102,7 @@ export const useTodoStore = create<TodoStore>()(
       },
 
       reorderTodos: (startIndex: number, endIndex: number) => {
-        const { todos, filter, searchQuery } = get();
+        const { filter, searchQuery } = get();
         
         // Only allow drag & drop when viewing all todos without search
         if (filter !== 'all' || searchQuery.trim()) {
