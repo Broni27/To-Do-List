@@ -1,0 +1,241 @@
+.todoItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1rem;
+  padding: 1rem 1.25rem;
+  background-color: var(--bg-primary);
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  box-shadow: 0 2px 4px var(--shadow);
+  transition: all var(--transition-speed) var(--transition-easing);
+  animation: slideIn 0.3s var(--transition-easing);
+}
+
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateX(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.todoItem:hover {
+  border-color: var(--accent);
+  box-shadow: 0 4px 12px var(--shadow-hover);
+  transform: translateY(-2px);
+}
+
+.todoItem.dragging {
+  opacity: 0.5;
+  transform: rotate(2deg);
+  box-shadow: 0 8px 16px var(--shadow-hover);
+}
+
+.todoItem.completed {
+  opacity: 0.7;
+}
+
+.todoItem.completed .text {
+  text-decoration: line-through;
+  color: var(--text-tertiary);
+}
+
+.todoItem.completed .description {
+  opacity: 0.6;
+}
+
+.content {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+  min-width: 0;
+}
+
+.dragHandle {
+  display: flex;
+  align-items: center;
+  cursor: grab;
+  color: var(--text-tertiary);
+  padding: 0.25rem;
+  transition: color var(--transition-speed) var(--transition-easing);
+}
+
+.dragHandle:active {
+  cursor: grabbing;
+}
+
+.dragHandle:hover {
+  color: var(--text-primary);
+}
+
+.dragIcon {
+  font-size: 1.2rem;
+  line-height: 1;
+  user-select: none;
+}
+
+.checkbox {
+  width: 20px;
+  height: 20px;
+  cursor: pointer;
+  accent-color: var(--accent);
+  flex-shrink: 0;
+}
+
+.textContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.text {
+  font-size: 1rem;
+  color: var(--text-primary);
+  word-break: break-word;
+  cursor: pointer;
+  transition: color var(--transition-speed) var(--transition-easing);
+}
+
+.text:hover {
+  color: var(--accent);
+}
+
+.description {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  word-break: break-word;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.editContainer {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  min-width: 0;
+}
+
+.editInput {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 1rem;
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+}
+
+.editDescription {
+  width: 100%;
+  padding: 0.5rem;
+  font-size: 0.875rem;
+  font-family: inherit;
+  border: 2px solid var(--accent);
+  border-radius: 6px;
+  background-color: var(--bg-primary);
+  color: var(--text-primary);
+  resize: vertical;
+  min-height: 60px;
+}
+
+.editActions {
+  display: flex;
+  gap: 0.5rem;
+  margin-top: 0.25rem;
+}
+
+.saveButton,
+.cancelButton {
+  padding: 0.5rem 1rem;
+  font-size: 0.875rem;
+  font-weight: 500;
+  border-radius: 6px;
+  transition: all var(--transition-speed) var(--transition-easing);
+}
+
+.saveButton {
+  background-color: var(--accent);
+  color: white;
+}
+
+.saveButton:hover {
+  background-color: var(--accent-hover);
+  transform: translateY(-1px);
+}
+
+.cancelButton {
+  background-color: var(--bg-tertiary);
+  color: var(--text-primary);
+}
+
+.cancelButton:hover {
+  background-color: var(--bg-secondary);
+}
+
+.actions {
+  display: flex;
+  gap: 0.5rem;
+  flex-shrink: 0;
+}
+
+.editButton,
+.deleteButton {
+  width: 36px;
+  height: 36px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  border-radius: 8px;
+  font-size: 1.1rem;
+  transition: all var(--transition-speed) var(--transition-easing);
+  opacity: 0.7;
+}
+
+.todoItem:hover .editButton,
+.todoItem:hover .deleteButton {
+  opacity: 1;
+}
+
+.editButton:hover {
+  background-color: var(--bg-tertiary);
+  transform: scale(1.1);
+}
+
+.deleteButton:hover {
+  background-color: var(--danger);
+  color: white;
+  transform: scale(1.1);
+}
+
+.deleteButton:active,
+.editButton:active {
+  transform: scale(0.95);
+}
+
+@media (max-width: 768px) {
+  .todoItem {
+    padding: 0.875rem 1rem;
+  }
+
+  .content {
+    gap: 0.75rem;
+  }
+
+  .dragHandle {
+    display: none;
+  }
+
+  .actions {
+    opacity: 1;
+  }
+}
+

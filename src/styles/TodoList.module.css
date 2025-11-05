@@ -1,0 +1,33 @@
+.todoList {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  padding: 0;
+  margin: 0;
+  min-height: 200px;
+}
+
+.todoList.draggingOver {
+  background-color: var(--bg-tertiary);
+  border-radius: 12px;
+  padding: 1rem;
+  transition: background-color 0.2s var(--transition-easing);
+}
+
+.emptyState {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 200px;
+  background-color: var(--bg-primary);
+  border-radius: 12px;
+  box-shadow: 0 2px 8px var(--shadow);
+  animation: fadeIn 0.4s var(--transition-easing);
+}
+
+.emptyText {
+  font-size: 1.1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
